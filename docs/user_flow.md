@@ -4,6 +4,8 @@
 
 Open App
 ↓
+Home page
+↓
 View Event Feed
 ↓
 Browse Events
@@ -23,6 +25,8 @@ Attend Event
 ## Club Flow
 
 Open App
+↓
+Home Page
 ↓
 Club Login
 ↓

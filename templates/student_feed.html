@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unmute</title>
+</head>
+<body>
+
+    <h1>Student Feed</h1>
+
+    {% for event in events %}
+
+        <div>
+            <h2>{{ event.title }}</h2>
+            <p>Date: {{ event.date }}</p>
+            <p>Location: {{ event.location }}</p>
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+</body>
+</html>
