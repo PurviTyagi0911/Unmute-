@@ -5,6 +5,7 @@
 Unmute is a campus discovery platform designed to help students stay informed about everything happening around them.
 
 In many colleges, information about events, club recruitments, workshops, symposiums, competitions, trips, and opportunities is scattered across WhatsApp groups, Instagram stories, notice boards, and word of mouth. As a result, students often miss activities that match their interests.
+And clubs has to go with word of mouth marketing to reach students.
 
 Unmute aims to bring all campus opportunities into one place through a centralized feed.
 
