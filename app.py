@@ -11,7 +11,10 @@ def init_db():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT NOT NULL,
         category TEXT NOT NULL,
-        location TEXT NOT NULL
+        location TEXT NOT NULL,
+        date TEXT,
+        time TEXT,
+        description TEXT
     )
     """)
 
@@ -29,7 +32,7 @@ def student_feed():
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT title, category, location
+    SELECT title, category, location,date,time,description
     FROM events
     """)
 
@@ -43,7 +46,10 @@ def student_feed():
         events.append({
             "title": row[0],
             "category": row[1],
-            "location": row[2]
+            "location": row[2],
+            'date':row[3],
+            'time':row[4],
+            'description':row[5]
         })
 
     return render_template(
@@ -59,14 +65,20 @@ def create_posts():
       title = request.form['title']
       category = request.form['category']
       location = request.form['location']
+      date = request.form['date']
+      time = request.form['time']
+      description = request.form['description']
+
+
+
 
       conn = sqlite3.connect("unmute.db")
       cursor = conn.cursor()
 
       cursor.execute("""
-      INSERT INTO events(title, category, location)
-      VALUES (?, ?, ?)
-      """,(title, category, location)
+      INSERT INTO events(title, category, location,date,time,description)
+      VALUES (?, ?, ?,?,?,?)
+      """,(title, category, location,date,time,description)
                     )
 
       conn.commit()
