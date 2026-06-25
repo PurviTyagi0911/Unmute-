@@ -7,17 +7,25 @@
 
     <h1>Student Feed</h1>
 
-    {% for event in events %}
+   {% for event in events %}
+<div class="event-card">
 
-        <div>
-            <h2>{{ event.title }}</h2>
-            <p>Date: {{ event.date }}</p>
-            <p>Location: {{ event.location }}</p>
-        </div>
+    {% if event.image_url %}
+        <img src="{{ event.image_url }}" alt="Event Image" width="250">
+    {% endif %}
 
-        <hr>
+    <h2>{{ event.title }}</h2>
 
-    {% endfor %}
+    <p><b>Club:</b> {{ event.club_name }}</p>
+    <p><b>Category:</b> {{ event.category }}</p>
+    <p><b>Date:</b> {{ event.date }}</p>
+    <p><b>Time:</b> {{ event.time }}</p>
+    <p><b>Location:</b> {{ event.location }}</p>
+    <p>{{ event.description }}</p>
+
+</div>
+<hr>
+{% endfor %}
 
 </body>
 </html>
