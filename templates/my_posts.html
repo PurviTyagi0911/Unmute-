@@ -2,10 +2,14 @@
 <html>
 <head>
     <title>Unmute</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 <body>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <h1 class="feed-title">Student Feed</h1>
+    <div style="text-align:center; margin-bottom:20px;">
+        <a href="/club_dashboard" class="event-btn">Back to Dashboard</a>
+    </div>
+    <h1 class="feed-title">My Posts</h1>
 
 <div class="feed-container">
     {% for event in events %}

@@ -34,24 +34,22 @@ def club_login():
     if request.method=='POST':
         club_name=request.form['club_name']
         session['club_name']=club_name
-        return redirect(url_for('create_posts'))
+        return redirect(url_for('club_dashboard'))
     return render_template('clubs_login.html')
+@app.route('/club_dashboard')
+def club_dashboard():
+    return render_template('club_dashboard.html')
 @app.route("/student_feed")
 def student_feed():
     conn = sqlite3.connect("unmute.db")
     cursor = conn.cursor()
-
     cursor.execute("""
     SELECT title, category, location,date,time,description,image_url,club_name
     FROM events
     """)
-
     rows = cursor.fetchall()
-
     conn.close()
-
     events = []
-
     for row in rows:
         events.append({
             "title": row[0],
@@ -61,17 +59,39 @@ def student_feed():
             'time':row[4],
             'description':row[5],
             'image_url': row[6],
-
             'club_name': row[7]
-
-
-
         })
 
     return render_template(
         "student_feed.html",
         events=events
     )
+@app.route('/my_posts')
+def my_posts():
+    if 'club_name' not in session:
+     return redirect(url_for('club_login'))
+    conn=sqlite3.connect('unmute.db')
+    cursor=conn.cursor()
+    club_n=session['club_name']
+    cursor.execute(
+        """SELECT title, category, location,date,time,description,image_url,club_name FROM events WHERE club_name=?
+    """,(club_n,)
+    )
+    rows = cursor.fetchall()
+    conn.close()
+    events = []
+    for row in rows:
+        events.append({
+            "title": row[0],
+            "category": row[1],
+            "location": row[2],
+            'date':row[3],
+            'time':row[4],
+            'description':row[5],
+            'image_url': row[6],
+            'club_name': row[7]
+        })
+    return render_template('my_posts.html',events=events)
 
 @app.route('/create_posts', methods=['GET', 'POST'])
 def create_posts():
@@ -100,8 +120,9 @@ def create_posts():
       conn.commit()
       conn.close()
 
-      return redirect(url_for('student_feed'))
+      return redirect(url_for('club_dashboard'))
     return render_template('create_posts.html')
+
 
 if __name__ == "__main__":
     init_db()
