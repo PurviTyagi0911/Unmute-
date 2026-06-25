@@ -16,8 +16,9 @@ def init_db():
         date TEXT,
         time TEXT,
         description TEXT,
-        club_name TEXT,
-        image_url TEXT
+        image_url TEXT,
+        
+        club_name TEXT
     )
     """)
 
@@ -59,8 +60,11 @@ def student_feed():
             'date':row[3],
             'time':row[4],
             'description':row[5],
-            'club_name': row[6],
-            'image_url': row[7]
+            'image_url': row[6],
+
+            'club_name': row[7]
+
+
 
         })
 
@@ -82,21 +86,17 @@ def create_posts():
       date = request.form['date']
       time = request.form['time']
       description = request.form.get('description')
-      club_name=session['club_name']
       image_url=request.form.get('image_url')
 
-
-
-
+      club_name=session['club_name']
       conn = sqlite3.connect("unmute.db")
       cursor = conn.cursor()
 
       cursor.execute("""
-      INSERT INTO events(title, category, location,date,time,description,club_name,image_url)
+      INSERT INTO events(title, category, location,date,time,description,image_url,club_name)
       VALUES (?, ?, ?,?,?,?,?,?)
-      """,(title, category, location,date,time,description,club_name,image_url)
+      """,(title, category, location,date,time,description,image_url,club_name)
                     )
-
       conn.commit()
       conn.close()
 
