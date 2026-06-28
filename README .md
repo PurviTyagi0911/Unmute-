@@ -1,3 +1,116 @@
+# USER FLOW
+
+## Student Flow
+
+Open App
+↓
+Home page
+↓
+View Event Feed
+↓
+Browse Events
+↓
+Filter by Category / Date
+↓
+Open Event Details
+↓
+View Location, Time, Description
+↓
+Mark Interested (Future Feature)
+↓
+Attend Event
+
+---
+
+## Club Flow
+
+Open App
+↓
+Home Page
+↓
+Club Login
+↓
+Access Club Portal
+↓
+Create Event
+↓
+Enter Title
+↓
+Select Category
+↓
+Add Date & Time
+↓
+Add Location
+↓
+Upload Poster
+↓
+Publish Event
+↓
+Event Appears In Student Feed
+
+---
+
+## Announcement Flow
+
+Club Login
+↓
+Create Announcement
+↓
+Write Message
+↓
+Publish
+↓
+Appears In Live Announcements Section
+
+# FEATURES
+
+## Student Features
+
+* View campus events
+* Search events
+* Filter by category
+* Filter by date
+* View event details
+* View announcements
+* Browse events without registration
+* Notification about every new post
+
+---
+
+## Club Features
+
+* Club login
+* Create events
+* Edit events
+* Delete events
+* Upload event posters
+* Post announcements
+
+---
+
+## Event Information
+
+Each event contains:
+
+* Title
+* Category
+* Date
+* Time
+* Location
+* Description
+* Poster Image
+
+---
+
+## Future Features
+
+* Interested button
+* Notifications to specific accounts
+* Event reminders
+* Club analytics
+* Event bookmarks
+* Personalized recommendations
+
 # DATABASE
 
 ## Clubs
