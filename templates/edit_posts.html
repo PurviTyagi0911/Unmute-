@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Edit Post</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<h1>Edit Event</h1>
+
+<form method="POST">
+
+<input type="text" name="title" value="{{ event.title }}" required>
+
+<input type="text" name="category" value="{{ event.category }}" required>
+
+<input type="text" name="location" value="{{ event.location }}" required>
+
+<input type="date" name="date" value="{{ event.date }}" required>
+
+<input type="time" name="time" value="{{ event.time }}" required>
+
+<textarea name="description">{{ event.description }}</textarea>
+
+<input type="text" name="image_url" value="{{ event.image_url }}">
+
+<button type="submit">
+Save Changes
+</button>
+
+</form>
+
+</body>
+
+</html>
