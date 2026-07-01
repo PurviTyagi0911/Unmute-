@@ -38,7 +38,10 @@ def club_login():
     return render_template('clubs_login.html')
 @app.route('/club_dashboard')
 def club_dashboard():
-    return render_template('club_dashboard.html')
+        if 'club_name' not in session:
+         return redirect(url_for('club_login'))
+
+        return render_template('club_dashboard.html')
 @app.route("/student_feed")
 def student_feed():
     conn = sqlite3.connect("unmute.db")
@@ -92,6 +95,7 @@ def my_posts():
             'image_url': row[7],
             'club_name': row[8]
         })
+    
     return render_template('my_posts.html',events=events)
 
 @app.route('/create_posts', methods=['GET', 'POST'])
@@ -168,7 +172,20 @@ def edit_posts(post_id):
     }
 
     return render_template("edit_posts.html",event=event)
+@app.route('/delete_post/<int:post_id>', methods=['POST'])
+def delete_post(post_id): 
+    if 'club_name' not in session:
+        return(redirect(url_for('club_login')))
+    conn=sqlite3.connect('unmute.db')
+    cursor=conn.cursor()
+    cursor.execute(
+        """DELETE FROM events where id=? AND club_name=?
     
+""",(post_id,session['club_name'])
+    )
+    conn.commit()
+    conn.close()
+    return(redirect(url_for('my_posts')))
 
 
 
